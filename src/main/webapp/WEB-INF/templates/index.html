@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Groceries List</title>
 </head>
+
+<style> table, th, td { border: 1px solid black;} </style>
 <body>
 
+<h2>My shopping list</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>Items</th>
+        <th>Amount</th>
+        <th>Total price</th>
+    </tr>
+    <tr th:if="${groceries.empty}">
+        <td colspan="2"> No groceries available </td>
+    </tr>
+    <tr th:each="grocery: ${groceries}">
+        <td><span th:text="${grocery.items}"> Items </span></td>
+        <td><span th:text="${grocery.amount}"> Amount </span></td>
+        <td><span th:text="${grocery.totalPrice}"> Total Price</span></td>
+    </tr>
+</table>
 </body>
 </html>

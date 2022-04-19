@@ -1,6 +1,7 @@
 package applicationpackage.data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -14,6 +15,7 @@ public class Groceries implements CostRelated{
     @NotBlank(message = "item can't be left blank!")
     @Column(length = 1000)
     private String name;
+    @Min(value=1, message = "Numbers must be above 0")
     private int amount;
     private double price;
 
